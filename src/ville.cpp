@@ -3,30 +3,45 @@
 
 using namespace std;
 
-Ville::Ville() : nom{"Inconnu"}, nbVilleAccessible{10}
-{
-    villeAccesible = new Ville*[nbVilleAccessible];
-}
 
-Ville::Ville(string nom) : nom{nom}, nbVilleAccessible{10}
-{
-    villeAccesible = new Ville*[nbVilleAccessible];
-}
 
-Ville::Ville(std::string nom,int nbVille) : nom{nom}, nbVilleAccessible{nbVille}
+Ville::Ville(string nom,int numero) : nom{nom}, numero{numero}
 {
-    villeAccesible = new Ville*[nbVilleAccessible];
 }
 
 string Ville::getNom() const{
     return nom;
 }
 
-int Ville::getNbVilleAccessible() const{
-    return nbVilleAccessible;
-}
-
 Ville::~Ville(){
 
-    delete []villeAccesible;
+}
+
+void Ville::ajouterVilleAccessible(Ville* ville){
+    villeAccessible.push_back(ville);
+}
+
+void Ville::afficherVilleAccessible() const {
+    for ( Ville* i : villeAccessible ){
+        cout << i->getNom() << endl ;
+    }
+}
+
+ostream & operator<<(ostream& os,const Ville& ville){
+
+    os << ville.getNom() << " ( Ville accessible : " ;
+
+    for ( int i = 0 ; i < int(ville.villeAccessible.size()) ; i++ ){
+        cout << ville.villeAccessible[i]->getNom()  << ", ";
+    }
+    cout << ") ";
+    return os ;
+}
+
+vector<Ville*> Ville::getVilleAccessible() const {
+    return villeAccessible;
+}
+
+int Ville::getNumero() const {
+    return numero;
 }
