@@ -33,6 +33,5 @@ int main(){
     cout << doha << endl;
     cout << copenhague << endl;
 
-    reseau.test(addis,bogota);
     return 0;
 }
