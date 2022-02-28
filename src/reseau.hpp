@@ -1,26 +1,28 @@
 #ifndef RESEAU_HPP
 #define RESEAU_HPP
 #include <string>
-#include "ville.hpp"
+#include <vector>
+
+class Ville;
 
 class Reseau{
     private:
         std::string nom;
-        int nbVille;
-        Ville* villeReseau;
+        std::vector<Ville*> villeReseau;
+        std::vector<std::vector<int>> matriceAccessible ; 
 
     public:
         Reseau();
         Reseau(std::string nom);
-        Reseau(std::string nom,int nbVille);
         
         std::string getNom() const ;
-        int getNbVille() const;
+
+        void ajouterVille(Ville* ville);
+        void afficherVille() const ;
+
+        void initMatriceAccessible();
 
         ~Reseau();
 };
-
-
-
 
 #endif
