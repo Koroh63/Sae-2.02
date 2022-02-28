@@ -1,36 +1,42 @@
 #include <iostream>
 #include "reseau.hpp"
+#include "ville.hpp"
 
 using namespace std;
 
-Reseau::Reseau(string nom,int nbVille) : nom{nom}, nbVille{nbVille} 
+Reseau::Reseau(string nom) : nom{nom}
 {
-    villeReseau = new Ville[nbVille];
 }
 
-Reseau::Reseau() : nom{"Inconnu"}, nbVille{10} 
+Reseau::Reseau() : nom{"Inconnu"}
 {
-    villeReseau = new Ville[nbVille];
 }
-
-Reseau::Reseau(string nom) : nom{nom}, nbVille{10} 
-{
-    villeReseau = new Ville[nbVille];
-}
-
 
 
 string Reseau::getNom() const{
     return nom;
 }
 
-int Reseau::getNbVille() const{
-    return nbVille;
-}
 
 Reseau::~Reseau(){
 
-    
-    delete [] villeReseau;
-
 }
+
+void Reseau::ajouterVille(Ville* ville){
+    villeReseau.push_back(ville);
+}
+
+void Reseau::afficherVille() const {
+
+    for ( Ville* i : villeReseau ){
+        cout << i->getNom() << endl ;
+    }
+}
+
+void Reseau::initMatriceAccessible() {
+    matriceAccessible = {{0,1,1,0},
+                        {1,0,0,0},
+                        {0,1,0,1},
+                        {0,0,0,0}};
+}
+
