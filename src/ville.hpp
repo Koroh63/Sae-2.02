@@ -1,26 +1,28 @@
 #ifndef VILLE_HPP
 #define VILLE_HPP
 #include <string>
+#include <vector>
 
 class Ville {
     private:
 
         std::string nom;
-        int nbVilleAccessible;
-        Ville** villeAccesible;
+        std::vector<Ville*> villeAccessible;
+        int numero ;
 
     public:
 
-        Ville();
-        Ville(std::string nom);
-        Ville(std::string nom,int nbVille);
+        Ville(std::string nom,int numero);
 
         std::string getNom() const ;
-        int getNbVilleAccessible() const ;
+        int getNumero() const;
+
+        void ajouterVilleAccessible(Ville* ville);
+        void afficherVilleAccessible() const ;
+
+        std::vector<Ville*> getVilleAccessible() const ;
 
         ~Ville();
+        friend std::ostream& operator<<(std::ostream& os,const Ville& ville);
 };
-
-
-
 #endif
