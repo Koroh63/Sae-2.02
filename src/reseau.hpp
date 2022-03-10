@@ -21,6 +21,11 @@ class Reseau{
         void afficherVille() const ;
 
         void initMatriceAccessible();
+        
+        void rechercheLargeur(Ville* villeStart,Ville* villeEnd);
+        std::vector<Ville*> rechercheRecur(std::vector<Ville*> chemin,Ville* villeStart,Ville* villeEnd) const ;
+        void rechercheDestination(Ville* villeStart);
+        std::vector<Ville*> fonction(std::vector<Ville*> villeDispo,std::vector<Ville*> villeAces,Ville* ville);
 
         ~Reseau();
 };
